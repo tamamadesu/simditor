@@ -1,9 +1,9 @@
 
 $ ->
-  Simditor.locale = 'en-US'
+  Simditor.locale = 'zh-CN'
 
-  toolbar= ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment']
-  mobileToolbar=["bold","underline","strikethrough","color","ul","ol"]
+  toolbar= ['mark','title', 'bold', 'italic', 'color', '|', 'ol', 'ul', 'blockquote', '|', 'link', 'image', 'hr', '|', 'alignment']
+  mobileToolbar=["bold","color","ul","ol"]
   toolbar = mobileToolbar if mobilecheck()
   editor = new Simditor
     textarea: $('#txt-content')

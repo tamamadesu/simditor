@@ -5,7 +5,7 @@ class ItalicButton extends Button
 
   icon: 'italic'
 
-  htmlTag: 'i'
+  htmlTag: 'i, em'
 
   disableTag: 'pre'
 

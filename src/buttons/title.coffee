@@ -3,7 +3,7 @@ class TitleButton extends Button
 
   name: 'title'
 
-  htmlTag: 'h1, h2, h3, h4'
+  htmlTag: 'h2, h3, h4'
 
   disableTag: 'pre, table'
 
@@ -13,10 +13,6 @@ class TitleButton extends Button
       text: @_t('normalText'),
       param: 'p'
     }, '|', {
-      name: 'h1',
-      text: @_t('title') + ' 1',
-      param: 'h1'
-    }, {
       name: 'h2',
       text: @_t('title') + ' 2',
       param: 'h2'
@@ -28,10 +24,6 @@ class TitleButton extends Button
       name: 'h4',
       text: @_t('title') + ' 4',
       param: 'h4'
-    }, {
-      name: 'h5',
-      text: @_t('title') + ' 5',
-      param: 'h5'
     }]
     super()
 

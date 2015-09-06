@@ -12,26 +12,26 @@ class Formatter extends SimpleModule
     @editor = @_module
 
     @_allowedTags = $.merge(
-      ['br', 'span', 'a', 'img', 'b', 'strong', 'i',
-      'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1',
+      ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'em',
+      'u', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code',
       'h2', 'h3', 'h4', 'hr'],
       @opts.allowedTags
     )
 
     @_allowedAttributes = $.extend
-      img: ['src', 'alt', 'width', 'height', 'data-non-image']
-      a: ['href', 'target']
-      font: ['color']
+      img: ['src', 'alt']
+      a: ['href']
       code: ['class']
     , @opts.allowedAttributes
 
     @_allowedStyles = $.extend
       span: ['color']
-      p: ['margin-left', 'text-align']
-      h1: ['margin-left', 'text-align']
-      h2: ['margin-left', 'text-align']
-      h3: ['margin-left', 'text-align']
-      h4: ['margin-left', 'text-align']
+      p: ['margin-top', 'margin-bottom', 'text-align']
+      h1: ['margin-top', 'margin-bottom','text-align']
+      h2: ['margin-top', 'margin-bottom', 'text-align']
+      h3: ['margin-top', 'margin-bottom', 'text-align']
+      h4: ['margin-top', 'margin-bottom', 'text-align']
+      h5: ['margin-top', 'margin-bottom', 'text-align']
     , @opts.allowedStyles
 
     @editor.body.on 'click', 'a', (e) ->
