@@ -70,10 +70,11 @@ class Indentation extends SimpleModule
 
       @editor.selection.restore()
     else if $blockEl.is 'p, h1, h2, h3, h4'
-      marginLeft = parseInt($blockEl.css('margin-left')) || 0
-      marginLeft = (Math.round(marginLeft / @opts.indentWidth) + 1) *
-        @opts.indentWidth
-      $blockEl.css 'margin-left', marginLeft
+      # marginLeft = parseInt($blockEl.css('margin-left')) || 0
+      # marginLeft = (Math.round(marginLeft / @opts.indentWidth) + 1) *
+      #   @opts.indentWidth
+      # $blockEl.css 'margin-left', marginLeft
+      console.log '暂时屏蔽indent'
     else if $blockEl.is('table') or $blockEl.is('.simditor-table')
       $td = @editor.selection.containerNode().closest('td, th')
       $nextTd = $td.next('td, th')
@@ -137,10 +138,11 @@ class Indentation extends SimpleModule
 
       @editor.selection.restore()
     else if $blockEl.is 'p, h1, h2, h3, h4'
-      marginLeft = parseInt($blockEl.css('margin-left')) || 0
-      marginLeft = Math.max(Math.round(marginLeft / @opts.indentWidth) - 1, 0) *
-        @opts.indentWidth
-      $blockEl.css 'margin-left', if marginLeft == 0 then '' else marginLeft
+      # marginLeft = parseInt($blockEl.css('margin-left')) || 0
+      # marginLeft = Math.max(Math.round(marginLeft / @opts.indentWidth) - 1, 0) *
+      #   @opts.indentWidth
+      # $blockEl.css 'margin-left', if marginLeft == 0 then '' else marginLeft
+      console.log '暂时屏蔽outdent'
     else if $blockEl.is('table') or $blockEl.is('.simditor-table')
       $td = @editor.selection.containerNode().closest('td, th')
       $prevTd = $td.prev('td, th')

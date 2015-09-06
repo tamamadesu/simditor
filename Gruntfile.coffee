@@ -32,6 +32,7 @@ module.exports = (grunt) ->
             'src/buttons/list.coffee'
             'src/buttons/blockquote.coffee'
             'src/buttons/code.coffee'
+            'src/buttons/mark.coffee'
             'src/buttons/link.coffee'
             'src/buttons/image.coffee'
             'src/buttons/indent.coffee'
