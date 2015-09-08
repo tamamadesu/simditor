@@ -260,6 +260,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-curl'
 
   grunt.registerTask 'default', ['site', 'express', 'watch']
+  # grunt.registerTask 'default', ['site', 'express', 'jasmine:test:build', 'watch']
+  # grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
   grunt.registerTask 'site', ['sass', 'coffee', 'umd', 'copy:vendor', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
   grunt.registerTask 'test', ['coffee:moduleSpec', 'coffee:buttonSpec', 'jasmine']
   grunt.registerTask 'package', ['clean:package', 'copy:package', 'uglify:simditor', 'compress']
