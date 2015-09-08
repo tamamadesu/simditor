@@ -41,6 +41,7 @@ module.exports = (grunt) ->
             'src/buttons/table.coffee'
             'src/buttons/strikethrough.coffee'
             'src/buttons/alignment.coffee'
+            'src/buttons/self.coffee'
           ]
       site:
         expand: true
@@ -152,19 +153,16 @@ module.exports = (grunt) ->
     watch:
       styles:
         files: ['styles/*.scss']
-        tasks: ['sass:simditor', 'copy:styles', 'jekyll']
+        tasks: ['sass:simditor', 'copy:styles']
       scripts:
         files: ['src/*.coffee', 'src/buttons/*.coffee']
-        tasks: ['coffee:simditor', 'umd', 'copy:scripts', 'jekyll']
+        tasks: ['coffee:simditor', 'umd', 'copy:scripts']
       siteStyles:
         files: ['site/assets/_sass/*.scss']
-        tasks: ['sass:site', 'jekyll']
+        tasks: ['sass:site']
       siteScripts:
         files: ['site/assets/_coffee/*.coffee']
-        tasks: ['coffee:site', 'jekyll']
-      jekyll:
-        files: ['site/**/*.html', 'site/**/*.md', 'site/**/*.yml']
-        tasks: ['jekyll']
+        tasks: ['coffee:site']
       moduleSpec:
         files: ['spec/src/*.coffee']
         tasks: ['coffee:moduleSpec']
@@ -262,6 +260,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', ['site', 'express', 'watch']
   # grunt.registerTask 'default', ['site', 'express', 'jasmine:test:build', 'watch']
   # grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
+  # grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'copy:scripts', 'copy:styles','watch']
   grunt.registerTask 'site', ['sass', 'coffee', 'umd', 'copy:vendor', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
   grunt.registerTask 'test', ['coffee:moduleSpec', 'coffee:buttonSpec', 'jasmine']
   grunt.registerTask 'package', ['clean:package', 'copy:package', 'uglify:simditor', 'compress']

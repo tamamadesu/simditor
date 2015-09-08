@@ -1,174 +1,4 @@
 
-
-
-
-# class TestButton extends Button
-
-#     name: 'test'
-#     icon: 'bold'
-
-#     htmlTag: 'strong'
-#     disableTag: 'pre'
-    
-#     # 刷新执行
-#     _status: ->
-#     _activeStatus: ->
-#         # @setActive true
-#     # 刷新执行
-#     render: (args...) ->
-#         super args...
-
-#     formatHTML: ($node) ->
-#         $node.attr("style","")
-#         $node.contents().each (i,item) =>
-#             $(item).attr("style","")
-#             if item.nodeType != 3
-#                 this.formatHTML($(item))
-#             else
-#                 return true
-
-#     command: (param) ->
-#         console.log(param)
-#         range = @editor.selection.range()
-#         $cont = $(range.extractContents())
-#         console.log($cont)
-#         # console.log($cont.parent())
-
-#         # bold
-#         # 剪切所选的内容
-#         # $cont  = $(@editor.selection.blockNodes())
-#         # document.execCommand 'bold'
-#         # $cont.contents().each (i, item) =>
-#         #     if item.tagName == "B"
-#         #         $strong = $("<strong />")
-#         #         $strong.html($(item).contents())
-#         #         $(item).replaceWith($strong);
-#         # @editor.selection.range range
-
-
-#         # format
-#         # $cont  = $(@editor.selection.blockNodes())
-#         # this.formatHTML($cont)
-
-
-
-#         # range.insertNode $link.get(0)
-
-#         # 设置光标在某元素后
-#         # @editor.selection.setRangeAtEndOf($link[0]);
-
-#         # range.selectNodeContents $link[0]
-#         # 选中某选择范围
-#         # @editor.selection.range range
-#         $(document).trigger 'selectionchange'
-
-#         # $("body").append(cont)
-
-
-
-# class TestButton extends Button
-
-#     name: 'test'
-#     icon: 'bold'
-#     htmlTag: 'h1, h2, h3, h4'
-
-#     disableTag: 'pre, table'
-
-#     _init: ->
-#         @menu = [{
-#           name: '14',
-#           text: '14px',
-#           param: 'margin-top:14px'
-#         }, {
-#           name: '20px',
-#           text: '20px',
-#           param: 'margin-top:20px'
-#         }]
-#         super()
-#     _activeStatus: ->
-#         $rootNodes = @editor.selection.rootNodes()
-#         console.log($(this.menuEl).find("li"))
-#         $(this.menuEl).find("li").attr("style",'')
-#         if $rootNodes
-#             if $rootNodes.attr("style")
-#                 top_px = $rootNodes.attr("style").split("margin-top:")[1].split("px")[0] 
-#                 $(this.menuEl).find("li").each (i,item) =>
-#                     console.log($(item).text()+"--"+ (top_px+"px"))
-#                     if $(item).text() == top_px+"px"
-#                         $(item).attr("style","background-color:#f6f6f6")
-#                 @setActive true
-#             else
-#                 @setActive false
-#         else
-#             @setActive false
-
-#     setActive: (active, param) ->
-#         super active
-
-#         @el.removeClass 'active-p active-h1 active-h2 active-h3'
-#         @el.addClass('active active-' + param) if active
-
-#     command: (param) ->
-
-#         $rootNodes = @editor.selection.rootNodes()
-#         $rootNodes.attr("style",param);
-#         @setActive true
-
-#         @editor.trigger 'valuechanged'
-#         
-
-class TestButton extends Button
-
-    name: 'test'
-    icon: 'bold'
-
-    _init: ->
-        @menu = [{
-          name: '14',
-          text: '14px',
-          param: 'margin-top:14px'
-        }, {
-          name: '20px',
-          text: '20px',
-          param: 'margin-top:20px'
-        }]
-        super()
-    _activeStatus: ->
-        $rootNodes = @editor.selection.rootNodes()
-        $(this.menuEl).find("li").attr("style",'')
-        if $rootNodes
-            if $rootNodes.attr("style")
-                top_px = $rootNodes.attr("style").split("font-size:")[1].split("px")[0] 
-                $(this.menuEl).find("li").each (i,item) =>
-                    console.log($(item).text()+"--"+ (top_px+"px"))
-                    if $(item).text() == top_px+"px"
-                        $(item).attr("style","background-color:#f6f6f6")
-                @setActive true
-            else
-                @setActive false
-        else
-            @setActive false
-
-    setActive: (active, param) ->
-        super active
-
-        @el.removeClass 'active-p active-h1 active-h2 active-h3'
-        @el.addClass('active active-' + param) if active
-
-    command: (param) ->
-
-        range = @editor.selection.range()
-        $cont = $(range.extractContents())
-        if $cont.text()
-            $fz   = $("<span />")
-                    .attr("style","font-size:"+param)
-                    .append($cont.contents())
-            range.insertNode $fz[0]
-            @editor.selection.setRangeAtEndOf($fz[0]);
-
-        @editor.trigger 'valuechanged'
-
-
 class FormatButton extends Button
 
       name:'format'
@@ -183,14 +13,13 @@ class FormatButton extends Button
 
         $node.attr("style", "")
 
-        $node.contents().each(function(i, item) {
+        $node.contents().each((i, item) ->
             $(item).attr("style", "")
-            if (item.nodeType !== 3) {
+            if (item.nodeType != 3)
               return @this.formatHTML($(item))
-            } else {
+            else
               return true
-            }
-        })
+        )
 
 
       command: (parm) ->
@@ -214,21 +43,21 @@ marginMenu = [
     text: ' normal',
     param: 'auto'
   }, {
-    name: '14',
-    text: '14px',
-    param: '14px'
+    name: '5',
+    text: '5px',
+    param: '5px'
   }, {
-    name: '20',
-    text: '20px',
-    param: '20px'
+    name: '10',
+    text: '10px', 
+    param: '10px'
   }, {
     name: '26',
     text: '26px',
     param: '26px'
   }, {
-    name: '30',
-    text: '30px',
-    param: '30px'
+    name: '35',
+    text: '35px',
+    param: '35px'
   }
 ]
 
@@ -248,6 +77,7 @@ class MarginTopButton extends Button
             @setActive true
             $(@menuEl).find("li").each((i, item) ->
                 $(item).css "background-color", "#f6f6f6"  if $(item).text() is $px
+            )
         else
             @setActive false
 
@@ -277,6 +107,7 @@ class MarginBottomButton extends Button
             @setActive true
             $(@menuEl).find("li").each((i, item) ->
                 $(item).css "background-color", "#f6f6f6"  if $(item).text() is $px
+            )
         else
             @setActive false
 
@@ -297,28 +128,27 @@ class FontSizeButton extends Button
     icon = "margin mdi-icon mdi-editor-format-size"
     _init = ->
       @title = "字号大小"
-      @menu = [
-        name: "normal"
-        text: " normal"
+      @menu = [{
+        name: "normal",
+        text: " normal",
         param: "auto"
-      ,
-        name: "14"
-        text: "14px"
-        param: "14px"
-      ,
-        name: "20"
-        text: "20px"
+      },{
+        name: "12",
+        text: "12px",
+        param: "12px"
+      },{
+        name: "20",
+        text: "20px",
         param: "20px"
-      ,
-        name: "26"
-        text: "26px"
+      },{
+        name: "26",
+        text: "26px",
         param: "26px"
-      ,
-        name: "30"
-        text: "30px"
+      },{
+        name: "30",
+        text: "30px",
         param: "30px"
-       ]
-       super()
+      }]
 
     _activeStatus = ->
       $rootNodes = @editor.selection.rootNodes()
@@ -340,6 +170,7 @@ class FontSizeButton extends Button
         $rootNodes.css "font-size", param
       else
         $rootNodes[0].style.fontSize = ""
+
       @setActive true
       @editor.trigger "valuechanged"
 
@@ -355,7 +186,8 @@ class HTMLButton extends Button
     needFocus: false
 
     _init: ->
-        super()
+
+        # super()
 
         @editor.textarea.on 'focus', (e) =>
           @editor.el.addClass('focus')
@@ -405,11 +237,10 @@ class VideoButton extends Button
     htmlTag    = "embed"
     disableTag = "pre, table"
     render = ->
-      args = (if 1 <= arguments.length then slice.call(arguments, 0) else [])
-      @editor.formatter._allowedTags.push "embed"
-      @editor.formatter._allowedAttributes["embed"] = [ "allowfullscreen", "id", "quality", "width", "height", "align", "src", "type" ]
-      VideoButton.__super__.render.apply this, args
-      @popover = new VideoPopover(button: this)
+        # super()
+        @editor.formatter._allowedTags.push "embed"
+        @editor.formatter._allowedAttributes["embed"] = [ "allowfullscreen", "id", "quality", "width", "height", "align", "src", "type" ]
+        @popover = new VideoPopover(button: this)
 
     getUrl = (url) ->
       site = [ "qq", "youku", "56" ]

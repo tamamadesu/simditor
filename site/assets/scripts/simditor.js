@@ -467,15 +467,19 @@ Formatter = (function(superClass) {
 
   Formatter.prototype._init = function() {
     this.editor = this._module;
+<<<<<<< HEAD
     this._allowedTags = $.merge(['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'], this.opts.allowedTags);
+=======
+    this._allowedTags = $.merge(['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'em', 'u', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h2', 'h3', 'h4', 'hr'], this.opts.allowedTags);
+>>>>>>> add self buttons
     this._allowedAttributes = $.extend({
-      img: ['src', 'alt', 'width', 'height', 'data-non-image'],
-      a: ['href', 'target'],
-      font: ['color'],
+      img: ['src', 'alt'],
+      a: ['href'],
       code: ['class']
     }, this.opts.allowedAttributes);
     this._allowedStyles = $.extend({
       span: ['color'],
+<<<<<<< HEAD
       b: ['color'],
       i: ['color'],
       strong: ['color'],
@@ -486,6 +490,14 @@ Formatter = (function(superClass) {
       h2: ['margin-left', 'text-align'],
       h3: ['margin-left', 'text-align'],
       h4: ['margin-left', 'text-align']
+=======
+      p: ['margin-top', 'margin-bottom', 'text-align'],
+      h1: ['margin-top', 'margin-bottom', 'text-align'],
+      h2: ['margin-top', 'margin-bottom', 'text-align'],
+      h3: ['margin-top', 'margin-bottom', 'text-align'],
+      h4: ['margin-top', 'margin-bottom', 'text-align'],
+      h5: ['margin-top', 'margin-bottom', 'text-align']
+>>>>>>> add self buttons
     }, this.opts.allowedStyles);
     return this.editor.body.on('click', 'a', function(e) {
       return false;
@@ -2042,7 +2054,7 @@ Indentation = (function(superClass) {
   };
 
   Indentation.prototype.indentBlock = function(blockEl) {
-    var $blockEl, $childList, $nextTd, $nextTr, $parentLi, $pre, $td, $tr, marginLeft, tagName;
+    var $blockEl, $childList, $nextTd, $nextTr, $parentLi, $pre, $td, $tr, tagName;
     $blockEl = $(blockEl);
     if (!$blockEl.length) {
       return;
@@ -2068,9 +2080,7 @@ Indentation = (function(superClass) {
       }
       this.editor.selection.restore();
     } else if ($blockEl.is('p, h1, h2, h3, h4')) {
-      marginLeft = parseInt($blockEl.css('margin-left')) || 0;
-      marginLeft = (Math.round(marginLeft / this.opts.indentWidth) + 1) * this.opts.indentWidth;
-      $blockEl.css('margin-left', marginLeft);
+      console.log('暂时屏蔽indent');
     } else if ($blockEl.is('table') || $blockEl.is('.simditor-table')) {
       $td = this.editor.selection.containerNode().closest('td, th');
       $nextTd = $td.next('td, th');
@@ -2107,7 +2117,7 @@ Indentation = (function(superClass) {
   };
 
   Indentation.prototype.outdentBlock = function(blockEl) {
-    var $blockEl, $parent, $parentLi, $pre, $prevTd, $prevTr, $td, $tr, marginLeft, range;
+    var $blockEl, $parent, $parentLi, $pre, $prevTd, $prevTr, $td, $tr, range;
     $blockEl = $(blockEl);
     if (!($blockEl && $blockEl.length > 0)) {
       return;
@@ -2140,9 +2150,7 @@ Indentation = (function(superClass) {
       }
       this.editor.selection.restore();
     } else if ($blockEl.is('p, h1, h2, h3, h4')) {
-      marginLeft = parseInt($blockEl.css('margin-left')) || 0;
-      marginLeft = Math.max(Math.round(marginLeft / this.opts.indentWidth) - 1, 0) * this.opts.indentWidth;
-      $blockEl.css('margin-left', marginLeft === 0 ? '' : marginLeft);
+      console.log('暂时屏蔽outdent');
     } else if ($blockEl.is('table') || $blockEl.is('.simditor-table')) {
       $td = this.editor.selection.containerNode().closest('td, th');
       $prevTd = $td.prev('td, th');
@@ -3084,7 +3092,7 @@ TitleButton = (function(superClass) {
 
   TitleButton.prototype.name = 'title';
 
-  TitleButton.prototype.htmlTag = 'h1, h2, h3, h4';
+  TitleButton.prototype.htmlTag = 'h2, h3, h4';
 
   TitleButton.prototype.disableTag = 'pre, table';
 
@@ -3095,10 +3103,6 @@ TitleButton = (function(superClass) {
         text: this._t('normalText'),
         param: 'p'
       }, '|', {
-        name: 'h1',
-        text: this._t('title') + ' 1',
-        param: 'h1'
-      }, {
         name: 'h2',
         text: this._t('title') + ' 2',
         param: 'h2'
@@ -3110,10 +3114,6 @@ TitleButton = (function(superClass) {
         name: 'h4',
         text: this._t('title') + ' 4',
         param: 'h4'
-      }, {
-        name: 'h5',
-        text: this._t('title') + ' 5',
-        param: 'h5'
       }
     ];
     return TitleButton.__super__._init.call(this);
@@ -3213,7 +3213,7 @@ ItalicButton = (function(superClass) {
 
   ItalicButton.prototype.icon = 'italic';
 
-  ItalicButton.prototype.htmlTag = 'i';
+  ItalicButton.prototype.htmlTag = 'i, em';
 
   ItalicButton.prototype.disableTag = 'pre';
 
@@ -3803,6 +3803,88 @@ CodePopover = (function(superClass) {
 })(Popover);
 
 Simditor.Toolbar.addButton(CodeButton);
+
+SimditorMark = (function(superClass) {
+  extend(SimditorMark, superClass);
+
+  function SimditorMark() {
+    return SimditorMark.__super__.constructor.apply(this, arguments);
+  }
+
+  SimditorMark.prototype.name = 'mark';
+
+  SimditorMark.prototype.icon = 'mark';
+
+  SimditorMark.prototype.htmlTag = 'mark';
+
+  SimditorMark.prototype.disableTag = 'pre, table';
+
+  SimditorMark.prototype.command = function() {
+    var $end, $start, range;
+    range = this.editor.selection.range();
+    if (this.active) {
+      this.editor.selection.save();
+      this.unmark(range);
+      this.editor.selection.restore();
+      this.editor.trigger('valuechanged');
+      return;
+    }
+    if (range.collapsed) {
+      return;
+    }
+    this.editor.selection.save();
+    $start = $(range.startContainer);
+    $end = $(range.endContainer);
+    if ($start.closest('mark').length) {
+      range.setStartBefore($start.closest('mark')[0]);
+    }
+    if ($end.closest('mark').length) {
+      range.setEndAfter($end.closest('mark')[0]);
+    }
+    this.mark(range);
+    this.editor.selection.restore();
+    this.editor.trigger('valuechanged');
+    if (this.editor.util.support.onselectionchange) {
+      return this.editor.trigger('selectionchanged');
+    }
+  };
+
+  SimditorMark.prototype.mark = function(range) {
+    var $contents, $mark;
+    if (range == null) {
+      range = this.editor.selection.range();
+    }
+    $contents = $(range.extractContents());
+    $contents.find('mark').each(function(index, ele) {
+      return $(ele).replaceWith($(ele).html());
+    });
+    $mark = $('<mark>').append($contents);
+    return range.insertNode($mark[0]);
+  };
+
+  SimditorMark.prototype.unmark = function(range) {
+    var $mark;
+    if (range == null) {
+      range = this.editor.selection.range();
+    }
+    if (range.collapsed) {
+      $mark = $(range.commonAncestorContainer);
+      if (!$mark.is('mark')) {
+        $mark = $mark.parent();
+      }
+    } else if ($(range.startContainer).closest('mark').length) {
+      $mark = $(range.startContainer).closest('mark');
+    } else if ($(range.endContainer).closest('mark').length) {
+      $mark = $(range.endContainer).closest('mark');
+    }
+    return $mark.replaceWith($mark.html());
+  };
+
+  return SimditorMark;
+
+})(Simditor.Button);
+
+Simditor.Toolbar.addButton(SimditorMark);
 
 LinkButton = (function(superClass) {
   extend(LinkButton, superClass);
@@ -5322,6 +5404,7 @@ AlignmentButton = (function(superClass) {
     this.nodes.css({
       'text-align': align === 'left' ? '' : align
     });
+    this.setActive(true, align);
     return this.editor.trigger('valuechanged');
   };
 

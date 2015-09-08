@@ -1,9 +1,9 @@
 (function() {
   $(function() {
     var $preview, editor, mobileToolbar, toolbar;
-    Simditor.locale = 'en-US';
-    toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
-    mobileToolbar = ["bold", "underline", "strikethrough", "color", "ul", "ol"];
+    Simditor.locale = 'zh-CN';
+    toolbar = ['mark', 'title', 'bold', 'italic', 'color', '|', 'ol', 'ul', 'blockquote', '|', 'link', 'image', 'hr', '|', 'alignment'];
+    mobileToolbar = ["bold", "color", "ul", "ol"];
     if (mobilecheck()) {
       toolbar = mobileToolbar;
     }
