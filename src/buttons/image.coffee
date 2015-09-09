@@ -280,9 +280,9 @@ class ImageButton extends Button
 
       $img.attr
         src: src,
-        width: width,
-        height: height,
-        'data-image-size': width + ',' + height
+        # width: width,
+        # height: height,
+        # 'data-image-size': width + ',' + height
       .removeClass('loading')
 
       if $img.hasClass('uploading') # img being uploaded
@@ -363,7 +363,7 @@ class ImagePopover extends Popover
         <label>#{ @_t 'imageAlt' }</label>
         <input class="image-alt" id="image-alt" type="text" tabindex="1" />
       </div>
-      <div class="settings-field">
+      <div class="settings-field" style="display:none">
         <label>#{ @_t 'imageSize' }</label>
         <input class="image-size" id="image-width" type="text" tabindex="2" />
         <span class="times">×</span>

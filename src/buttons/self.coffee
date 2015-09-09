@@ -64,11 +64,11 @@ marginMenu = [
 class MarginTopButton extends Button
     name = "marginTop"
     icon = "margin mdi-icon mdi-editor-vertical-align-top"
-    _init = ->
+    _init: ->
         @title = "上边距"
         @menu = marginMenu
 
-    _activeStatus = ->
+    _activeStatus: ->
         $rootNodes = @editor.selection.rootNodes()
         $(@menuEl).find("li").attr "style", ""
         $px = $rootNodes[0].style.marginTop
@@ -81,7 +81,7 @@ class MarginTopButton extends Button
         else
             @setActive false
 
-    command = (param) ->
+    command : (param) ->
       $rootNodes = undefined
       $rootNodes = @editor.selection.rootNodes()
       if param isnt "auto"
@@ -94,11 +94,11 @@ class MarginTopButton extends Button
 class MarginBottomButton extends Button
     name = "marginTop"
     icon = "margin mdi-icon mdi-editor-vertical-align-Bottom"
-    _init = ->
+    _init: ->
         @title = "上边距"
         @menu = marginMenu
 
-    _activeStatus = ->
+    _activeStatus: ->
         $rootNodes = @editor.selection.rootNodes()
         $(@menuEl).find("li").attr "style", ""
         $px = $rootNodes[0].style.marginTop
@@ -111,7 +111,7 @@ class MarginBottomButton extends Button
         else
             @setActive false
 
-    command = (param) ->
+    command : (param) ->
       $rootNodes = @editor.selection.rootNodes()
       if param isnt "auto"
         $rootNodes.css "margin-top", param
@@ -124,9 +124,9 @@ class MarginBottomButton extends Button
 
 class FontSizeButton extends Button
 
-    name = "fontSize"
-    icon = "margin mdi-icon mdi-editor-format-size"
-    _init = ->
+    name: "fontSize"
+    icon: "margin mdi-icon mdi-editor-format-size"
+    _init: ->
       @title = "字号大小"
       @menu = [{
         name: "normal",
@@ -149,12 +149,14 @@ class FontSizeButton extends Button
         text: "30px",
         param: "30px"
       }]
+      super()
 
-    _activeStatus = ->
+    _activeStatus: ->
       $rootNodes = @editor.selection.rootNodes()
-      $(@menuEl).find("li").attr "style", ""
+      $(@menuEl).find("li").attr("style","")
       $px = $rootNodes[0].style.fontSize
       top_px = parseFloat($px)
+
       if top_px
         @setActive true
         $(@menuEl).find("li").each ((_this) ->
@@ -164,7 +166,7 @@ class FontSizeButton extends Button
       else
         @setActive false
 
-    command = (param) ->
+    command: (param) ->
       $rootNodes = @editor.selection.rootNodes()
       if param isnt "auto"
         $rootNodes.css "font-size", param
@@ -236,13 +238,14 @@ class VideoButton extends Button
     title      = "插入视频"
     htmlTag    = "embed"
     disableTag = "pre, table"
-    render = ->
-        # super()
+    
+    render: ->
+        super()
         @editor.formatter._allowedTags.push "embed"
         @editor.formatter._allowedAttributes["embed"] = [ "allowfullscreen", "id", "quality", "width", "height", "align", "src", "type" ]
         @popover = new VideoPopover(button: this)
 
-    getUrl = (url) ->
+    getUrl : (url) ->
       site = [ "qq", "youku", "56" ]
       real = ""
       urlHandle = (item) ->
@@ -260,14 +263,14 @@ class VideoButton extends Button
         item  if url.indexOf(item) isnt -1
       )[0]
 
-    parseVideoSrc = (src) ->
+    parseVideoSrc : (src) ->
       if src and src.match(/\.swf\b/)
         videoSrc = src
       else videoSrc = @getUrl(src)  if src
 
       videoSrc
 
-    loadVideo = (src, target) ->
+    loadVideo : (src, target) ->
       videoSrc = @parseVideoSrc(src)
       return  unless videoSrc
       videoNode = $(@_videoTpl.replace("---video-src---", videoSrc))
@@ -275,7 +278,7 @@ class VideoButton extends Button
       @editor.trigger "valuechanged"
       @editor.trigger "selectionchanged"
 
-    command = ->
+    command: ->
       range = @editor.selection.range()
       startNode = range.startContainer
       endNode = range.endContainer
@@ -309,7 +312,7 @@ class VideoButton extends Button
 
 class VideoPopover extends Popover
 
-    render = ->
+    render: ->
         _tpl = "<div class=\"link-settings\">\n  <div class=\"settings-field\">\n    <label>视频地址</label>\n    <input class=\"video-src\" type=\"text\"/>\n  </div>\n</div>"
         @el.addClass("video-popover").append _tpl
         @srcEl = @el.find(".video-src")
@@ -325,7 +328,7 @@ class VideoPopover extends Popover
             _this.hide()
         )(this)
 
-    show = ->
+    show: ->
         args = (if 1 <= arguments.length then slice.call(arguments, 0) else [])
         VideoPopover.__super__.show.apply this, args
         @srcEl.val ""
