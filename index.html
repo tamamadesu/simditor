@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>simditor</title>
+    <link rel="stylesheet" href="styles/simditor.css">
+</head>
+
+<body>
+    <textarea id="txt-content" data-autosave="editor-content" autofocus required>
+        <p>Simditor is a browser-based WYSIWYG text editor.
+        </p>
+        <p>It is used by <a href="http://tower.im">Tower</a> -- a popular project management web application.
+        </p>
+        <p>Supported Browsers: IE10+、Chrome、Firefox、Safari.</p>
+        <ul>
+            <li><a href="https://github.com/mycolorway/simditor/releases" target="_blank" class="">Download Zip</a></li>
+            <li>Install with npm: $ npm install simditor</li>
+            <li>Install with bower: $ bower install simditor</li>
+        </ul>
+    </textarea>
+    <script src="site/assets/scripts/jquery.min.js"></script>
+    <script src="site/assets/scripts/module.js"></script>
+    <script src="site/assets/scripts/module.js"></script>
+    <script src="site/assets/scripts/uploader.js"></script>
+    <script src="site/assets/scripts/hotkeys.js"></script>
+    <script src="lib/simditor.js"></script>
+    <script>
+    "use strict";
+    var styles = ['margin-top', 'margin-bottom', 'text-align', 'font-size', 'color'];
+
+    var simditor_editor = new Simditor({
+        textarea: $('#txt-content'),
+        upload: {
+            url: '/admin/ueditor?action=uploadimage&item_id=', //文件上传的接口地址11 
+            fileKey: 'upfile', //服务器端获取文件数据的参数名  
+            connectionCount: 3,
+            file_path: 'url',
+            leaveConfirm: '正在上传文件'
+        },
+        toolbarFloatOffset: 50,
+        imageButton: ['upload'],
+        allowedTags: ['iframe', 'embed', 'video'],
+        allowedAttributes: {
+            iframe: ['src', 'height', 'width', 'style'],
+            video: ['src', 'height', 'width', 'style', 'controls'],
+            embed: ['allowfullscreen', 'id', 'quality', 'width', 'height', 'align', 'src', 'type'],
+        },
+        pasteImage: true,
+        allowedStyles: {
+            p: styles,
+            div: styles,
+            span: styles,
+            h2: styles,
+            h3: styles,
+            h4: styles,
+            h5: styles
+        },
+        toolbar: ['title', 'fontSize', 'bold', 'italic', 'alignment', 'marginTop', 'marginBottom','color', 'blockquote', 'emoji', 'ol', 'ul', 'hr', 'link', 'image', 'video', 'format', 'html']
+            //optional options
+    });
+    </script>
+    <script src="http://localhost:9988/livereload.js"></script>
+</body>
+
+</html>

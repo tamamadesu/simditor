@@ -1,4 +1,41 @@
 
+
+marginMenu = [
+  {
+    name: 'normal',
+    text: ' normal',
+    param: 'auto'
+  }, {
+    name: '5',
+    text: '5px',
+    param: '5px'
+  }, {
+    name: '10',
+    text: '10px', 
+    param: '10px'
+  }, {
+    name: '26',
+    text: '26px',
+    param: '26px'
+  }, {
+    name: '35',
+    text: '35px',
+    param: '35px'
+  }
+]
+
+charsContent = [
+    { name:"tsfh", title:"特殊字符", content:("、,。,·,ˉ,ˇ,¨,〃,々,—,～,‖,…,‘,’,“,”,〔,〕,〈,〉,《,》,「,」,『,』,〖,〗,【,】,±,×,÷,∶,∧,∨,∑,∏,∪,∩,∈,∷,√,⊥,∥,∠,⌒,⊙,∫,∮,≡,≌,≈,∽,∝,≠,≮,≯,≤,≥,∞,∵,∴,♂,♀,°,′,″,℃,＄,¤,￠,￡,‰,§,№,☆,★,○,●,◎,◇,◆,□,■,△,▲,※,→,←,↑,↓,〓,〡,〢,〣,〤,〥,〦,〧,〨,〩,㊣,㎎,㎏,㎜,㎝,㎞,㎡,㏄,㏎,㏑,㏒,㏕,︰,￢,￤,℡,ˊ,ˋ,˙,–,―,‥,‵,℅,℉,↖,↗,↘,↙,∕,∟,∣,≒,≦,≧,⊿,═,║,╒,╓,╔,╕,╖,╗,╘,╙,╚,╛,╜,╝,╞,╟,╠,╡,╢,╣,╤,╥,╦,╧,╨,╩,╪,╫,╬,╭,╮,╯,╰,╱,╲,╳,▁,▂,▃,▄,▅,▆,▇,�,█,▉,▊,▋,▌,▍,▎,▏,▓,▔,▕,▼,▽,◢,◣,◤,◥,☉,⊕,〒,〝,〞").split(",")},
+    { name:"lmsz", title:"罗马字符", content:("ⅰ,ⅱ,ⅲ,ⅳ,ⅴ,ⅵ,ⅶ,ⅷ,ⅸ,ⅹ,Ⅰ,Ⅱ,Ⅲ,Ⅳ,Ⅴ,Ⅵ,Ⅶ,Ⅷ,Ⅸ,Ⅹ,Ⅺ,Ⅻ").split(",")},
+    { name:"szfh", title:"数学字符", content:("⒈,⒉,⒊,⒋,⒌,⒍,⒎,⒏,⒐,⒑,⒒,⒓,⒔,⒕,⒖,⒗,⒘,⒙,⒚,⒛,⑴,⑵,⑶,⑷,⑸,⑹,⑺,⑻,⑼,⑽,⑾,⑿,⒀,⒁,⒂,⒃,⒄,⒅,⒆,⒇,①,②,③,④,⑤,⑥,⑦,⑧,⑨,⑩,㈠,㈡,㈢,㈣,㈤,㈥,㈦,㈧,㈨,㈩").split(",")},
+    { name:"rwfh", title:"日文字符", content:("ぁ,あ,ぃ,い,ぅ,う,ぇ,え,ぉ,お,か,が,き,ぎ,く,ぐ,け,げ,こ,ご,さ,ざ,し,じ,す,ず,せ,ぜ,そ,ぞ,た,だ,ち,ぢ,っ,つ,づ,て,で,と,ど,な,に,ぬ,ね,の,は,ば,ぱ,ひ,び,ぴ,ふ,ぶ,ぷ,へ,べ,ぺ,ほ,ぼ,ぽ,ま,み,む,め,も,ゃ,や,ゅ,ゆ,ょ,よ,ら,り,る,れ,ろ,ゎ,わ,ゐ,ゑ,を,ん,ァ,ア,ィ,イ,ゥ,ウ,ェ,エ,ォ,オ,カ,ガ,キ,ギ,ク,グ,ケ,ゲ,コ,ゴ,サ,ザ,シ,ジ,ス,ズ,セ,ゼ,ソ,ゾ,タ,ダ,チ,ヂ,ッ,ツ,ヅ,テ,デ,ト,ド,ナ,ニ,ヌ,ネ,ノ,ハ,バ,パ,ヒ,ビ,ピ,フ,ブ,プ,ヘ,ベ,ペ,ホ,ボ,ポ,マ,ミ,ム,メ,モ,ャ,ヤ,ュ,ユ,ョ,ヨ,ラ,リ,ル,レ,ロ,ヮ,ワ,ヰ,ヱ,ヲ,ン,ヴ,ヵ,ヶ").split(",")},
+    { name:"xlzm", title:"希腊字母", content:("Α,Β,Γ,Δ,Ε,Ζ,Η,Θ,Ι,Κ,Λ,Μ,Ν,Ξ,Ο,Π,Ρ,Σ,Τ,Υ,Φ,Χ,Ψ,Ω,α,β,γ,δ,ε,ζ,η,θ,ι,κ,λ,μ,ν,ξ,ο,π,ρ,σ,τ,υ,φ,χ,ψ,ω").split(",")},
+    { name:"ewzm", title:"俄文字符", content:("А,Б,В,Г,Д,Е,Ё,Ж,З,И,Й,К,Л,М,Н,О,П,Р,С,Т,У,Ф,Х,Ц,Ч,Ш,Щ,Ъ,Ы,Ь,Э,Ю,Я,а,б,в,г,д,е,ё,ж,з,и,й,к,л,м,н,о,п,р,с,т,у,ф,х,ц,ч,ш,щ,ъ,ы,ь,э,ю,я").split(",")},
+    { name:"pyzm", title:"拼音字母", content:("ā,á,ǎ,à,ē,é,ě,è,ī,í,ǐ,ì,ō,ó,ǒ,ò,ū,ú,ǔ,ù,ǖ,ǘ,ǚ,ǜ,ü").split(",")},
+    { name:"yyyb", title:"英语音标", content:("i:,i,e,æ,ʌ,ə:,ə,u:,u,ɔ:,ɔ,a:,ei,ai,ɔi,əu,au,iə,εə,uə,p,t,k,b,d,g,f,s,ʃ,θ,h,v,z,ʒ,ð,tʃ,tr,ts,dʒ,dr,dz,m,n,ŋ,l,r,w,j,").split(",")},
+    { name:"zyzf", title:"其他", content:("ㄅ,ㄆ,ㄇ,ㄈ,ㄉ,ㄊ,ㄋ,ㄌ,ㄍ,ㄎ,ㄏ,ㄐ,ㄑ,ㄒ,ㄓ,ㄔ,ㄕ,ㄖ,ㄗ,ㄘ,ㄙ,ㄚ,ㄛ,ㄜ,ㄝ,ㄞ,ㄟ,ㄠ,ㄡ,ㄢ,ㄣ,ㄤ,ㄥ,ㄦ,ㄧ,ㄨ").split(",")}
+];
+
 class FormatButton extends Button
 
       name:'format'
@@ -34,40 +71,15 @@ class FormatButton extends Button
             @editor.trigger 'valuechanged'
         @editor.trigger 'valuechanged'
 
-
-
-
-marginMenu = [
-  {
-    name: 'normal',
-    text: ' normal',
-    param: 'auto'
-  }, {
-    name: '5',
-    text: '5px',
-    param: '5px'
-  }, {
-    name: '10',
-    text: '10px', 
-    param: '10px'
-  }, {
-    name: '26',
-    text: '26px',
-    param: '26px'
-  }, {
-    name: '35',
-    text: '35px',
-    param: '35px'
-  }
-]
-
 class MarginTopButton extends Button
-    name = "marginTop"
-    icon = "margin mdi-icon mdi-editor-vertical-align-top"
+
+    name:"marginTop"
+    icon:"margin mdi-icon mdi-editor-vertical-align-top"
+
     _init: ->
         @title = "上边距"
         @menu = marginMenu
-
+        super()
     _activeStatus: ->
         $rootNodes = @editor.selection.rootNodes()
         $(@menuEl).find("li").attr "style", ""
@@ -82,18 +94,18 @@ class MarginTopButton extends Button
             @setActive false
 
     command : (param) ->
-      $rootNodes = undefined
-      $rootNodes = @editor.selection.rootNodes()
-      if param isnt "auto"
-        $rootNodes.css "margin-top", param
-      else
-        $rootNodes[0].style.marginTop = ""
-      @setActive true
-      @editor.trigger "valuechanged"
+        $rootNodes = undefined
+        $rootNodes = @editor.selection.rootNodes()
+        if param isnt "auto"
+            $rootNodes.css "margin-top", param
+        else
+            $rootNodes[0].style.marginTop = ""
+        @setActive true
+        @editor.trigger "valuechanged"
 
 class MarginBottomButton extends Button
-    name = "marginTop"
-    icon = "margin mdi-icon mdi-editor-vertical-align-Bottom"
+    name:"marginBottom"
+    icon:"margin mdi-icon mdi-editor-vertical-align-Bottom"
     _init: ->
         @title = "上边距"
         @menu = marginMenu
@@ -101,7 +113,7 @@ class MarginBottomButton extends Button
     _activeStatus: ->
         $rootNodes = @editor.selection.rootNodes()
         $(@menuEl).find("li").attr "style", ""
-        $px = $rootNodes[0].style.marginTop
+        $px = $rootNodes[0].style.marginBottom
         top_px = parseFloat($px)
         if top_px
             @setActive true
@@ -120,7 +132,6 @@ class MarginBottomButton extends Button
 
       @setActive true
       @editor.trigger "valuechanged"
-
 
 class FontSizeButton extends Button
 
@@ -176,9 +187,6 @@ class FontSizeButton extends Button
       @setActive true
       @editor.trigger "valuechanged"
 
-
-
-
 class HTMLButton extends Button
 
     name: 'html'
@@ -229,15 +237,14 @@ class HTMLButton extends Button
         @editor.textarea
           .height(@editor.textarea[0].scrollHeight - @_textareaPadding)
 
-
 class VideoButton extends Button
 
-    _videoTpl  = "<p><iframe width=\"620\" height=\"500\" frameborder=0 allowFullScreen=\"true\" quality=\"high\" align=\"middle\" allowScriptAccess=\"always\" src=\"---video-src---\"></iframe></p>"
-    name       = "video"
-    icon       = "video mdi-icon mdi-av-videocam"
-    title      = "插入视频"
-    htmlTag    = "embed"
-    disableTag = "pre, table"
+    _videoTpl  : "<p><iframe width=\"620\" height=\"500\" frameborder=0 allowFullScreen=\"true\" quality=\"high\" align=\"middle\" allowScriptAccess=\"always\" src=\"---video-src---\"></iframe></p>"
+    name       : "video"
+    icon       : "video mdi-icon mdi-av-videocam"
+    title      : "插入视频"
+    htmlTag    : "embed"
+    disableTag : "pre, table"
     
     render: ->
         super()
@@ -309,37 +316,87 @@ class VideoButton extends Button
       popoverTarget = $(@editor.selection.blockNodes())
       @popover.show popoverTarget
 
-
 class VideoPopover extends Popover
 
-    render: ->
-        _tpl = "<div class=\"link-settings\">\n  <div class=\"settings-field\">\n    <label>视频地址</label>\n    <input class=\"video-src\" type=\"text\"/>\n  </div>\n</div>"
-        @el.addClass("video-popover").append _tpl
-        @srcEl = @el.find(".video-src")
-        @srcEl.on "keydown", ((_this) ->
-          (e) ->
-            if e.which is 13
-              e.preventDefault()
-              _this.button.loadVideo _this.srcEl.val(), _this.target
-              _this.srcEl.blur()
-        )(this)
-        @srcEl.on "blur", ((_this) ->
-          ->
-            _this.hide()
-        )(this)
+    _tpl: """
+        <div class="link-settings">
+          <div class="settings-field">
+            <label>视频地址</label>
+            <input class="video-src" type="text"/>
+          </div>
+        </div>
+    """
 
-    show: ->
-        args = (if 1 <= arguments.length then slice.call(arguments, 0) else [])
-        VideoPopover.__super__.show.apply this, args
-        @srcEl.val ""
+    # constructor: (@button) ->
+    #     super @button.editor
+
+    render: ->
+        @el.addClass('video-popover')
+          .append(@_tpl)
+        @srcEl = @el.find '.video-src'
+
+        @srcEl.on 'keydown', (e) =>
+          if e.which == 13
+            e.preventDefault()
+            @button.loadVideo @srcEl.val(), @target
+            @srcEl.blur()
+
+        @srcEl.on 'blur', =>
+          @target.remove()
+          @hide()
+
+    show: (args...) ->
+        super args...
+        @srcEl.val ''
         @srcEl.focus()
 
+class EmojiButton extends Button
 
+    @i18n =
+        'zh-CN':
+          emoji: '表情'
+        'en-US':
+          emoji: 'emoji'
 
+    name: 'emoji'
 
-Simditor.Toolbar.addButton HTMLButton
-Simditor.Toolbar.addButton FormatButton
+    icon: 'smile-o'
+
+    menu: true
+
+    constructor: (args...) ->
+        super args...
+        $.merge @editor.formatter._allowedAttributes['img'], ['data-emoji', 'alt']
+
+    renderMenu: ->
+
+        tpl = '<div class="emoji-list">\n</div>'
+        html = ""
+
+        for con in charsContent[0].content
+            html += "<span>"+con+"</span>"
+
+        $list= $(tpl)
+        $list.html(html).appendTo(@menuWrapper)
+
+        $list.on 'mousedown', 'span', (e) =>
+
+            @wrapper.removeClass('menu-on')
+            return unless @editor.inputManager.focused
+
+            $moji   = $(e.currentTarget)
+            txtNode = document.createTextNode($moji.text())
+
+            @editor.selection.insertNode txtNode
+
+            @editor.trigger 'valuechanged'
+            @editor.trigger 'selectionchanged'
+            false
+
+Simditor.Toolbar.addButton FontSizeButton 
 Simditor.Toolbar.addButton MarginTopButton
 Simditor.Toolbar.addButton MarginBottomButton
-Simditor.Toolbar.addButton FontSizeButton
+Simditor.Toolbar.addButton HTMLButton
+Simditor.Toolbar.addButton FormatButton
 Simditor.Toolbar.addButton VideoButton
+Simditor.Toolbar.addButton EmojiButton

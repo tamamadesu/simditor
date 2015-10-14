@@ -14,11 +14,11 @@
   }
 }(this, function ($, SimpleModule, simpleHotkeys, simpleUploader) {
 
-var AlignmentButton, BlockquoteButton, BoldButton, Button, Clipboard, CodeButton, CodePopover, ColorButton, Formatter, HrButton, ImageButton, ImagePopover, IndentButton, Indentation, InputManager, ItalicButton, Keystroke, LinkButton, LinkPopover, ListButton, OrderListButton, OutdentButton, Popover, Selection, Simditor, StrikethroughButton, TableButton, TitleButton, Toolbar, UnderlineButton, UndoManager, UnorderListButton, Util,
+var AlignmentButton, BlockquoteButton, BoldButton, Button, Clipboard, CodeButton, CodePopover, ColorButton, FontSizeButton, FormatButton, Formatter, HTMLButton, HrButton, ImageButton, ImagePopover, IndentButton, Indentation, InputManager, ItalicButton, Keystroke, LinkButton, LinkPopover, ListButton, MarginBottomButton, MarginTopButton, OrderListButton, OutdentButton, Popover, Selection, Simditor, SimditorMark, StrikethroughButton, TableButton, TitleButton, Toolbar, UnderlineButton, UndoManager, UnorderListButton, Util, VideoButton, VideoPopover, marginMenu,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
-  slice = [].slice;
+  slice1 = [].slice;
 
 Selection = (function(superClass) {
   extend(Selection, superClass);
@@ -467,11 +467,7 @@ Formatter = (function(superClass) {
 
   Formatter.prototype._init = function() {
     this.editor = this._module;
-<<<<<<< HEAD
     this._allowedTags = $.merge(['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike', 'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1', 'h2', 'h3', 'h4', 'hr'], this.opts.allowedTags);
-=======
-    this._allowedTags = $.merge(['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'em', 'u', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h2', 'h3', 'h4', 'hr'], this.opts.allowedTags);
->>>>>>> add self buttons
     this._allowedAttributes = $.extend({
       img: ['src', 'alt'],
       a: ['href'],
@@ -479,7 +475,6 @@ Formatter = (function(superClass) {
     }, this.opts.allowedAttributes);
     this._allowedStyles = $.extend({
       span: ['color'],
-<<<<<<< HEAD
       b: ['color'],
       i: ['color'],
       strong: ['color'],
@@ -490,14 +485,6 @@ Formatter = (function(superClass) {
       h2: ['margin-left', 'text-align'],
       h3: ['margin-left', 'text-align'],
       h4: ['margin-left', 'text-align']
-=======
-      p: ['margin-top', 'margin-bottom', 'text-align'],
-      h1: ['margin-top', 'margin-bottom', 'text-align'],
-      h2: ['margin-top', 'margin-bottom', 'text-align'],
-      h3: ['margin-top', 'margin-bottom', 'text-align'],
-      h4: ['margin-top', 'margin-bottom', 'text-align'],
-      h5: ['margin-top', 'margin-bottom', 'text-align']
->>>>>>> add self buttons
     }, this.opts.allowedStyles);
     return this.editor.body.on('click', 'a', function(e) {
       return false;
@@ -2943,7 +2930,7 @@ Button = (function(superClass) {
 
   Button.prototype._t = function() {
     var args, ref, result;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     result = Button.__super__._t.apply(this, args);
     if (!result) {
       result = (ref = this.editor)._t.apply(ref, args);
@@ -3069,7 +3056,7 @@ Popover = (function(superClass) {
 
   Popover.prototype._t = function() {
     var args, ref, result;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     result = Popover.__super__._t.apply(this, args);
     if (!result) {
       result = (ref = this.button)._t.apply(ref, args);
@@ -3315,7 +3302,7 @@ ColorButton = (function(superClass) {
 
   ColorButton.prototype.render = function() {
     var args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     return ColorButton.__super__.render.apply(this, args);
   };
 
@@ -3601,7 +3588,7 @@ CodeButton = (function(superClass) {
 
   CodeButton.prototype.render = function() {
     var args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     CodeButton.__super__.render.apply(this, args);
     return this.popover = new CodePopover({
       button: this
@@ -3788,7 +3775,7 @@ CodePopover = (function(superClass) {
 
   CodePopover.prototype.show = function() {
     var args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     CodePopover.__super__.show.apply(this, args);
     this.lang = this.target.attr('data-lang');
     if (this.lang != null) {
@@ -3903,7 +3890,7 @@ LinkButton = (function(superClass) {
 
   LinkButton.prototype.render = function() {
     var args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     LinkButton.__super__.render.apply(this, args);
     return this.popover = new LinkPopover({
       button: this
@@ -4023,7 +4010,7 @@ LinkPopover = (function(superClass) {
 
   LinkPopover.prototype.show = function() {
     var args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     LinkPopover.__super__.show.apply(this, args);
     this.textEl.val(this.target.text());
     return this.urlEl.val(this.target.attr('href'));
@@ -4149,7 +4136,7 @@ ImageButton = (function(superClass) {
 
   ImageButton.prototype.render = function() {
     var args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     ImageButton.__super__.render.apply(this, args);
     this.popover = new ImagePopover({
       button: this
@@ -4675,7 +4662,7 @@ ImagePopover = (function(superClass) {
 
   ImagePopover.prototype.show = function() {
     var $img, args;
-    args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
     ImagePopover.__super__.show.apply(this, args);
     $img = this.target;
     this.width = $img.width();
@@ -5410,6 +5397,497 @@ AlignmentButton = (function(superClass) {
 })(Button);
 
 Simditor.Toolbar.addButton(AlignmentButton);
+
+marginMenu = [
+  {
+    name: 'normal',
+    text: ' normal',
+    param: 'auto'
+  }, {
+    name: '5',
+    text: '5px',
+    param: '5px'
+  }, {
+    name: '10',
+    text: '10px',
+    param: '10px'
+  }, {
+    name: '26',
+    text: '26px',
+    param: '26px'
+  }, {
+    name: '35',
+    text: '35px',
+    param: '35px'
+  }
+];
+
+FormatButton = (function(superClass) {
+  extend(FormatButton, superClass);
+
+  function FormatButton() {
+    return FormatButton.__super__.constructor.apply(this, arguments);
+  }
+
+  FormatButton.prototype.name = 'format';
+
+  FormatButton.prototype.icon = 'clear mdi-icon mdi-editor-format-clear';
+
+  FormatButton.prototype.htmlTag = 'strong';
+
+  FormatButton.prototype.disableTag = 'pre';
+
+  FormatButton.prototype.formatHTML = function() {
+    $node.attr("style", "");
+    return $node.contents().each(function(i, item) {
+      $(item).attr("style", "");
+      if (item.nodeType !== 3) {
+        return this["this"].formatHTML($(item));
+      } else {
+        return true;
+      }
+    });
+  };
+
+  FormatButton.prototype.command = function(parm) {
+    var $cont;
+    document.execCommand('removeformat');
+    $cont = $(this.editor.selection.blockNodes());
+    this.formatHTML($cont);
+    if (!this.editor.util.support.oninput) {
+      this.editor.trigger('valuechanged');
+    }
+    return this.editor.trigger('valuechanged');
+  };
+
+  return FormatButton;
+
+})(Button);
+
+MarginTopButton = (function(superClass) {
+  var icon, name;
+
+  extend(MarginTopButton, superClass);
+
+  function MarginTopButton() {
+    return MarginTopButton.__super__.constructor.apply(this, arguments);
+  }
+
+  name = "marginTop";
+
+  icon = "margin mdi-icon mdi-editor-vertical-align-top";
+
+  MarginTopButton.prototype._init = function() {
+    this.title = "上边距";
+    return this.menu = marginMenu;
+  };
+
+  MarginTopButton.prototype._activeStatus = function() {
+    var $px, $rootNodes, top_px;
+    $rootNodes = this.editor.selection.rootNodes();
+    $(this.menuEl).find("li").attr("style", "");
+    $px = $rootNodes[0].style.marginTop;
+    top_px = parseFloat($px);
+    if (top_px) {
+      this.setActive(true);
+      return $(this.menuEl).find("li").each(function(i, item) {
+        if ($(item).text() === $px) {
+          return $(item).css("background-color", "#f6f6f6");
+        }
+      });
+    } else {
+      return this.setActive(false);
+    }
+  };
+
+  MarginTopButton.prototype.command = function(param) {
+    var $rootNodes;
+    $rootNodes = void 0;
+    $rootNodes = this.editor.selection.rootNodes();
+    if (param !== "auto") {
+      $rootNodes.css("margin-top", param);
+    } else {
+      $rootNodes[0].style.marginTop = "";
+    }
+    this.setActive(true);
+    return this.editor.trigger("valuechanged");
+  };
+
+  return MarginTopButton;
+
+})(Button);
+
+MarginBottomButton = (function(superClass) {
+  var icon, name;
+
+  extend(MarginBottomButton, superClass);
+
+  function MarginBottomButton() {
+    return MarginBottomButton.__super__.constructor.apply(this, arguments);
+  }
+
+  name = "marginTop";
+
+  icon = "margin mdi-icon mdi-editor-vertical-align-Bottom";
+
+  MarginBottomButton.prototype._init = function() {
+    this.title = "上边距";
+    return this.menu = marginMenu;
+  };
+
+  MarginBottomButton.prototype._activeStatus = function() {
+    var $px, $rootNodes, top_px;
+    $rootNodes = this.editor.selection.rootNodes();
+    $(this.menuEl).find("li").attr("style", "");
+    $px = $rootNodes[0].style.marginTop;
+    top_px = parseFloat($px);
+    if (top_px) {
+      this.setActive(true);
+      return $(this.menuEl).find("li").each(function(i, item) {
+        if ($(item).text() === $px) {
+          return $(item).css("background-color", "#f6f6f6");
+        }
+      });
+    } else {
+      return this.setActive(false);
+    }
+  };
+
+  MarginBottomButton.prototype.command = function(param) {
+    var $rootNodes;
+    $rootNodes = this.editor.selection.rootNodes();
+    if (param !== "auto") {
+      $rootNodes.css("margin-top", param);
+    } else {
+      $rootNodes[0].style.marginBottom = "";
+    }
+    this.setActive(true);
+    return this.editor.trigger("valuechanged");
+  };
+
+  return MarginBottomButton;
+
+})(Button);
+
+FontSizeButton = (function(superClass) {
+  extend(FontSizeButton, superClass);
+
+  function FontSizeButton() {
+    return FontSizeButton.__super__.constructor.apply(this, arguments);
+  }
+
+  FontSizeButton.prototype.name = "fontSize";
+
+  FontSizeButton.prototype.icon = "margin mdi-icon mdi-editor-format-size";
+
+  FontSizeButton.prototype._init = function() {
+    this.title = "字号大小";
+    this.menu = [
+      {
+        name: "normal",
+        text: " normal",
+        param: "auto"
+      }, {
+        name: "13",
+        text: "13px",
+        param: "13px"
+      }, {
+        name: "20",
+        text: "20px",
+        param: "20px"
+      }, {
+        name: "26",
+        text: "26px",
+        param: "26px"
+      }, {
+        name: "30",
+        text: "30px",
+        param: "30px"
+      }
+    ];
+    return FontSizeButton.__super__._init.call(this);
+  };
+
+  FontSizeButton.prototype._activeStatus = function() {
+    var $px, $rootNodes, top_px;
+    $rootNodes = this.editor.selection.rootNodes();
+    $(this.menuEl).find("li").attr("style", "");
+    $px = $rootNodes[0].style.fontSize;
+    top_px = parseFloat($px);
+    if (top_px) {
+      this.setActive(true);
+      return $(this.menuEl).find("li").each((function(_this) {
+        return function(i, item) {
+          if ($(item).text() === $px) {
+            return $(item).css("background-color", "#f6f6f6");
+          }
+        };
+      })(this));
+    } else {
+      return this.setActive(false);
+    }
+  };
+
+  FontSizeButton.prototype.command = function(param) {
+    var $rootNodes;
+    $rootNodes = this.editor.selection.rootNodes();
+    if (param !== "auto") {
+      $rootNodes.css("font-size", param);
+    } else {
+      $rootNodes[0].style.fontSize = "";
+    }
+    this.setActive(true);
+    return this.editor.trigger("valuechanged");
+  };
+
+  return FontSizeButton;
+
+})(Button);
+
+HTMLButton = (function(superClass) {
+  extend(HTMLButton, superClass);
+
+  function HTMLButton() {
+    return HTMLButton.__super__.constructor.apply(this, arguments);
+  }
+
+  HTMLButton.prototype.name = 'html';
+
+  HTMLButton.prototype.icon = 'html5';
+
+  HTMLButton.prototype.needFocus = false;
+
+  HTMLButton.prototype._init = function() {
+    this.editor.textarea.on('focus', (function(_this) {
+      return function(e) {
+        return _this.editor.el.addClass('focus').removeClass('error');
+      };
+    })(this));
+    this.editor.textarea.on('blur', (function(_this) {
+      return function(e) {
+        _this.editor.el.removeClass('focus');
+        _this.editor.setValue(_this.editor.textarea.val());
+        return _this.editor.trigger('valuechanged');
+      };
+    })(this));
+    return this.editor.textarea.on('input', (function(_this) {
+      return function(e) {
+        return _this._resizeTextarea();
+      };
+    })(this));
+  };
+
+  HTMLButton.prototype.command = function() {
+    var button, k, len, ref, results;
+    this.editor.blur();
+    this.editor.el.toggleClass('simditor-html');
+    this.editor.htmlMode = this.editor.el.hasClass('simditor-html');
+    if (this.editor.htmlMode) {
+      this.editor.hidePopover();
+      this.editor.textarea.val(this.beautifyHTML(this.editor.textarea.val()));
+      this._resizeTextarea();
+    }
+    ref = this.editor.toolbar.buttons;
+    results = [];
+    for (k = 0, len = ref.length; k < len; k++) {
+      button = ref[k];
+      if (button.name === 'html') {
+        results.push(button.setActive(this.editor.htmlMode));
+      } else {
+        results.push(button.setDisabled(this.editor.htmlMode));
+      }
+    }
+    return results;
+  };
+
+  HTMLButton.prototype.beautifyHTML = function() {
+    var args;
+    args = 1 <= arguments.length ? slice1.call(arguments, 0) : [];
+    if (beautify.html) {
+      return beautify.html.apply(beautify, args);
+    } else {
+      return beautify.apply(null, args);
+    }
+  };
+
+  HTMLButton.prototype._resizeTextarea = function() {
+    this._textareaPadding || (this._textareaPadding = this.editor.textarea.innerHeight() - this.editor.textarea.height());
+    return this.editor.textarea.height(this.editor.textarea[0].scrollHeight - this._textareaPadding);
+  };
+
+  return HTMLButton;
+
+})(Button);
+
+VideoButton = (function(superClass) {
+  var _videoTpl, disableTag, htmlTag, icon, name, title;
+
+  extend(VideoButton, superClass);
+
+  function VideoButton() {
+    return VideoButton.__super__.constructor.apply(this, arguments);
+  }
+
+  _videoTpl = "<p><iframe width=\"620\" height=\"500\" frameborder=0 allowFullScreen=\"true\" quality=\"high\" align=\"middle\" allowScriptAccess=\"always\" src=\"---video-src---\"></iframe></p>";
+
+  name = "video";
+
+  icon = "video mdi-icon mdi-av-videocam";
+
+  title = "插入视频";
+
+  htmlTag = "embed";
+
+  disableTag = "pre, table";
+
+  VideoButton.prototype.render = function() {
+    VideoButton.__super__.render.call(this);
+    this.editor.formatter._allowedTags.push("embed");
+    this.editor.formatter._allowedAttributes["embed"] = ["allowfullscreen", "id", "quality", "width", "height", "align", "src", "type"];
+    return this.popover = new VideoPopover({
+      button: this
+    });
+  };
+
+  VideoButton.prototype.getUrl = function(url) {
+    var real, site, urlHandle;
+    site = ["qq", "youku", "56"];
+    real = "";
+    urlHandle = function(item) {
+      var id, src;
+      switch (item) {
+        case "qq":
+          id = url.split("vid=")[1].split("&")[0];
+          return src = "http://v.qq.com/iframe/player.html?vid=" + id + "&tiny=0&auto=0";
+        case "youku":
+          id = url.split(".html")[0].split("id_")[1];
+          return src = "http://player.youku.com/embed/" + id;
+        case "56":
+          return console.log("not support");
+      }
+    };
+    return urlHandle(site.filter(function(item) {
+      if (url.indexOf(item) !== -1) {
+        return item;
+      }
+    })[0]);
+  };
+
+  VideoButton.prototype.parseVideoSrc = function(src) {
+    var videoSrc;
+    if (src && src.match(/\.swf\b/)) {
+      videoSrc = src;
+    } else {
+      if (src) {
+        videoSrc = this.getUrl(src);
+      }
+    }
+    return videoSrc;
+  };
+
+  VideoButton.prototype.loadVideo = function(src, target) {
+    var videoNode, videoSrc;
+    videoSrc = this.parseVideoSrc(src);
+    if (!videoSrc) {
+      return;
+    }
+    videoNode = $(this._videoTpl.replace("---video-src---", videoSrc));
+    target.html(videoNode);
+    this.editor.trigger("valuechanged");
+    return this.editor.trigger("selectionchanged");
+  };
+
+  VideoButton.prototype.command = function() {
+    var $breakedEl, $endBlock, $startBlock, endNode, popoverTarget, range, startNode;
+    range = this.editor.selection.range();
+    startNode = range.startContainer;
+    endNode = range.endContainer;
+    $startBlock = this.editor.selection.nodes().first();
+    $endBlock = this.editor.selection.nodes().end();
+    range.deleteContents();
+    if ($startBlock[0] === $endBlock[0]) {
+      if ($startBlock.is("li")) {
+        $startBlock = this.editor.util.furthestNode($startBlock, "ul, ol");
+        $endBlock = $startBlock;
+        range.setEndAfter($startBlock[0]);
+        range.collapse(false);
+      } else if ($startBlock.is("p")) {
+        if (this.editor.util.isEmptyNode($startBlock)) {
+          range.selectNode($startBlock[0]);
+          range.deleteContents();
+        } else if (this.editor.selection.rangeAtEndOf($startBlock, range)) {
+          range.setEndAfter($startBlock[0]);
+          range.collapse(false);
+        } else if (this.editor.selection.rangeAtStartOf($startBlock, range)) {
+          range.setEndBefore($startBlock[0]);
+          range.collapse(false);
+        } else {
+          $breakedEl = this.editor.selection.breakBlockEl($startBlock, range);
+          range.setEndBefore($breakedEl[0]);
+          range.collapse(false);
+        }
+      }
+    }
+    popoverTarget = $("</p>");
+    popoverTarget = $(this.editor.selection.blockNodes());
+    return this.popover.show(popoverTarget);
+  };
+
+  return VideoButton;
+
+})(Button);
+
+VideoPopover = (function(superClass) {
+  extend(VideoPopover, superClass);
+
+  function VideoPopover() {
+    return VideoPopover.__super__.constructor.apply(this, arguments);
+  }
+
+  VideoPopover.prototype.render = function() {
+    var _tpl;
+    _tpl = "<div class=\"link-settings\">\n  <div class=\"settings-field\">\n    <label>视频地址</label>\n    <input class=\"video-src\" type=\"text\"/>\n  </div>\n</div>";
+    this.el.addClass("video-popover").append(_tpl);
+    this.srcEl = this.el.find(".video-src");
+    this.srcEl.on("keydown", (function(_this) {
+      return function(e) {
+        if (e.which === 13) {
+          e.preventDefault();
+          _this.button.loadVideo(_this.srcEl.val(), _this.target);
+          return _this.srcEl.blur();
+        }
+      };
+    })(this));
+    return this.srcEl.on("blur", (function(_this) {
+      return function() {
+        return _this.hide();
+      };
+    })(this));
+  };
+
+  VideoPopover.prototype.show = function() {
+    var args;
+    args = (1 <= arguments.length ? slice.call(arguments, 0) : []);
+    VideoPopover.__super__.show.apply(this, args);
+    this.srcEl.val("");
+    return this.srcEl.focus();
+  };
+
+  return VideoPopover;
+
+})(Popover);
+
+Simditor.Toolbar.addButton(FontSizeButton);
+
+Simditor.Toolbar.addButton(HTMLButton);
+
+Simditor.Toolbar.addButton(FormatButton);
+
+Simditor.Toolbar.addButton(MarginTopButton);
+
+Simditor.Toolbar.addButton(MarginBottomButton);
+
+Simditor.Toolbar.addButton(VideoButton);
 
 return Simditor;
 
